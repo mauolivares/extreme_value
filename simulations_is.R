@@ -20,7 +20,7 @@ local({r <- getOption("repos"); r["CRAN"] <- "http://cran.r-project.org"; option
 # -------------------#
 # Load Packages
 
-pkg<-list("plyr", "mvtnorm","quantreg")
+pkg<-list("plyr", "mvtnorm","quantreg","eva")
 lapply(pkg, require, character.only=T)
 rm(pkg)
 

@@ -23,13 +23,11 @@ hill.est <- function(x,k){
   return(h)
 }
 
-
-
-
-
-
-
-
+mme <- function(x,u){
+  z <- gpdFit(x,threshold = u)$exceedances
+  xi <- 0.5*(1-mean(z)/var(z))
+  return(xi)
+}
 
 # ---------------------------------------- #
 # ---------------------------------------- #
@@ -42,6 +40,21 @@ monahan.test <- function(x,k){
   t.stat <- sqrt(k/hill.est(x,k)^2)*(hill.est(x,k)-0.5)
   return(t.stat)
 }
+
+
+t.test.mle <- function(x,u){
+  n <- length(x)
+  mle <- gpdFit(x,threshold = u)$par.ests
+  t.stat <- sqrt(n/(3*mle[1]^2))*(mle[2]-0.5)
+  return(t.stat)
+}
+
+
+
+
+
+
+
 
 
 
